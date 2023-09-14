@@ -47,27 +47,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
             : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Container(
-                    width: 100.0,
-                    height: 100.0,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.blue,
-                    ),
-                    child: Image.network(
-                      image!,
-                      scale: 1,
-                      errorBuilder: (BuildContext context, Object exception,
-                          StackTrace? stackTrace) {
-                        return const Text('Error loading image');
-                      },
-                    ),
+                  CircleAvatar(
+                    foregroundColor: Colors.transparent,
+                    backgroundImage: NetworkImage(image!),
+                    radius: 70,
                   ),
-                  // CircleAvatar(
-                  //   foregroundColor: Colors.transparent,
-                  //   backgroundImage: NetworkImage(image!),
-                  //   radius: 50,
-                  // ),
                   const SizedBox(height: 20),
                   Text(
                       'Name: ${userData['name']['first']} ${userData['name']['last']}'),

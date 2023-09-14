@@ -4,6 +4,12 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+<string>Explanation of why your app needs Bluetooth access.</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>Explanation of why your app needs background location access.</string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>Explanation of why your app needs location access when in use.</string>
 	<key>CFBundleDisplayName</key>
 	<string>Flutter Task</string>
 	<key>CFBundleExecutable</key>

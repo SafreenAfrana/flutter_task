@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_blue/flutter_blue.dart';
 
 class BluetoothScreen extends StatefulWidget {
   @override
@@ -8,13 +7,12 @@ class BluetoothScreen extends StatefulWidget {
 }
 
 class _BluetoothScreenState extends State<BluetoothScreen> {
-  static const platform = MethodChannel('bluetooth_native');
-  final FlutterBlue flutterBlue = FlutterBlue.instance;
   bool isBluetoothEnabled = false;
+  static const MethodChannel _channel = MethodChannel('bluetooth_channel');
 
   Future<void> enableBluetooth() async {
     try {
-      final bool result = await platform.invokeMethod('enableBluetooth');
+      final bool result = await _channel.invokeMethod('enableBluetooth');
       if (result) {
         setState(() {
           isBluetoothEnabled = true;
@@ -29,7 +27,7 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bluetooth Control'),
+        title: const Text('Bluetooth Control'),
       ),
       body: Center(
         child: Column(
@@ -37,14 +35,14 @@ class _BluetoothScreenState extends State<BluetoothScreen> {
           children: [
             ElevatedButton(
               onPressed: isBluetoothEnabled ? null : enableBluetooth,
-              child: Text('Enable Bluetooth'),
+              child: const Text('Enable Bluetooth'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text(
               isBluetoothEnabled
                   ? 'Bluetooth is enabled'
                   : 'Bluetooth is disabled',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
               ),
